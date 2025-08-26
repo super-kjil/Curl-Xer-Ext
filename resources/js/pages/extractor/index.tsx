@@ -1,12 +1,11 @@
 import React, { useState, useCallback } from 'react';
 import { useDropzone } from 'react-dropzone';
 import mammoth from 'mammoth';
-import { Upload, FileText, Copy, CheckCircle, X } from 'lucide-react';
+import { Upload, FileText, Copy, CheckCircle } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { toast } from 'sonner';
 import AppLayout from '@/layouts/app-layout';
-import { Breadcrumbs } from '@/components/breadcrumbs';
 import { Head } from '@inertiajs/react';
 import { BreadcrumbItem } from '@/types';
 
@@ -24,7 +23,6 @@ export default function Index() {
   const [extractedContent, setExtractedContent] = useState<ExtractedContent | null>(null);
   const [isProcessing, setIsProcessing] = useState(false);
   const [copiedDomains, setCopiedDomains] = useState(false);
-//   const [copiedText, setCopiedText] = useState(false);
 
   const onDrop = useCallback(async (acceptedFiles: File[]) => {
     const file = acceptedFiles[0];
@@ -57,7 +55,7 @@ export default function Index() {
     } finally {
       setIsProcessing(false);
     }
-  }, [toast]);
+  }, []);
 
   const { getRootProps, getInputProps, isDragActive } = useDropzone({
     onDrop,
@@ -87,7 +85,7 @@ export default function Index() {
       setCopiedState(true);
       toast.success("Content has been copied successfully");
       setTimeout(() => setCopiedState(false), 2000);
-    } catch (error) {
+    } catch {
       toast.error("Could not copy to clipboard");
     }
   };
