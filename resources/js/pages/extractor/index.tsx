@@ -103,11 +103,11 @@ export default function Index() {
 
     <div className="container mx-auto px-4 py-8 max-w-4xl">
       <div className="text-center mb-8">
-        <h1 className="text-3xl font-bold text-gray-900 mb-2">
+        <h1 className="text-3xl font-bold text-gray-900 dark:text-white mb-2">
           MS Word Document Extractor
         </h1>
-        <p className="text-gray-600">
-          Upload a .docx file to extract domain names and text content
+        <p className="text-gray-600 dark:text-gray-400">
+          Upload a .docx file to extract domain names and IPv4 addresses
         </p>
       </div>
 
@@ -124,20 +124,20 @@ export default function Index() {
             {...getRootProps()}
             className={`border-2 border-dashed rounded-lg p-8 text-center cursor-pointer transition-colors ${
               isDragActive
-                ? 'border-blue-500 bg-blue-50'
-                : 'border-gray-300 hover:border-gray-400 hover:bg-gray-50'
+                ? 'border-blue-500 bg-blue-50 dark:bg-blue-900'
+                : 'border-gray-300 hover:border-gray-400 hover:bg-gray-50 dark:hover:bg-gray-900'
             }`}
           >
             <input {...getInputProps()} />
-            <Upload className="mx-auto h-12 w-12 text-gray-400 mb-4" />
+            <Upload className="mx-auto h-12 w-12 text-gray-400 dark:text-gray-400 mb-4" />
             {isDragActive ? (
               <p className="text-blue-600 font-medium">Drop the file here...</p>
             ) : (
               <div>
-                <p className="text-gray-600 mb-2">
+                <p className="text-gray-600 dark:text-gray-400 mb-2">
                   Drag and drop a .docx file here, or click to select
                 </p>
-                <p className="text-sm text-gray-500">
+                <p className="text-sm text-gray-500 dark:text-gray-400">
                   Supports Microsoft Word (.docx) files only
                 </p>
               </div>
@@ -191,9 +191,9 @@ export default function Index() {
             </CardHeader>
             <CardContent>
               {extractedContent.domains.length > 0 ? (
-                <div className="bg-gray-50 rounded-lg p-4 max-h-96 overflow-y-auto">
+                <div className="border-2 border-dashed rounded-lg p-4 max-h-96 overflow-y-auto">
                   {extractedContent.domains.map((domain, index) => (
-                    <div key={index} className="text-sm font-mono text-gray-800 py-1">
+                    <div key={index} className="text-sm font-mono text-gray-800 dark:text-gray-200 py-1">
                       {domain}
                     </div>
                   ))}
